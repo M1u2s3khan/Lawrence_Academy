@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Awards & Achievements · Lawrence Academy</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ============================================================
+                   ROOT VARIABLES
+                   ============================================================ */
+        :root {
+            --primary: #1a3a5c;
+            --primary-dark: #0f2440;
+            --accent: #d4a843;
+            --accent-light: #f0d78c;
+            --accent-dark: #b8912e;
+            --dark: #1a1a2e;
+            --light-bg: #f8f6f1;
+            --card-bg: #ffffff;
+            --text-dark: #2c2c2c;
+            --text-muted: #6c757d;
+            --border-light: rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background: var(--light-bg);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* ============================================================
+                   TOP BAR
+                   ============================================================ */
+        .top-bar {
+            background: var(--primary-dark);
+            padding: 6px 0;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .top-bar a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .top-bar a:hover {
+            color: var(--accent);
+        }
+        .top-bar i {
+            color: var(--accent);
+            margin-right: 5px;
+        }
+
+        /* ============================================================
+                   NAVBAR
+                   ============================================================ */
+        .main-navbar {
+            background: var(--primary);
+            padding: 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1050;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+        }
+        .brand-text h5 {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 0;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+        .brand-text span {
+            color: var(--accent);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+
+        .main-navbar .nav-link {
+            color: rgba(255, 255, 255, 0.85) !important;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 22px 16px !important;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+            position: relative;
+        }
+        .main-navbar .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: width 0.3s;
+            border-radius: 3px 3px 0 0;
+        }
+        .main-navbar .nav-link:hover::after,
+        .main-navbar .nav-link.active::after {
+            width: 70%;
+        }
+        .main-navbar .nav-link:hover,
+        .main-navbar .nav-link.active {
+            color: #fff !important;
+        }
+
+        /* ── Dropdown ── */
+        .main-navbar .dropdown-menu {
+            background: #ffffff;
+            border: none;
+            border-radius: 12px;
+            padding: 10px 0;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            margin-top: 6px;
+            min-width: 220px;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            transform-origin: top center;
+        }
+        .main-navbar .dropdown-item {
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 24px;
+            color: #1e293b;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .main-navbar .dropdown-item i {
+            width: 20px;
+            color: var(--accent-dark);
+        }
+        .main-navbar .dropdown-item:hover {
+            background: var(--light-bg);
+            color: var(--primary);
+            padding-left: 28px;
+        }
+        .main-navbar .dropdown-divider {
+            margin: 6px 16px;
+            border-color: rgba(0, 0, 0, 0.06);
+        }
+
+        /* Desktop hover */
+        @media (min-width: 992px) {
+            .main-navbar .dropdown:hover .dropdown-menu {
+                display: block;
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .main-navbar .dropdown-menu {
+                display: block;
+                opacity: 0;
+                transform: translateY(-8px);
+                pointer-events: none;
+                transition: opacity 0.2s, transform 0.2s;
+            }
+            .main-navbar .dropdown:hover .dropdown-menu {
+                pointer-events: auto;
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .main-navbar .dropdown-menu .dropdown-item {
+                pointer-events: auto;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 991.98px) {
+            .main-navbar .dropdown-menu {
+                opacity: 1;
+                transform: none;
+                pointer-events: auto;
+                display: none;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+                background: #fff;
+                border-radius: 8px;
+                margin-top: 2px;
+            }
+            .main-navbar .dropdown-menu.show {
+                display: block;
+            }
+            .main-navbar .nav-link {
+                padding: 12px 16px !important;
+            }
+            .main-navbar .nav-link::after {
+                display: none;
+            }
+        }
+
+        /* ── Toggler Button (Hamburger → Cross) ── */
+        .navbar-toggler {
+            border: 2px solid var(--accent);
+            padding: 6px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: border-color 0.3s, background 0.3s;
+            background: transparent;
+        }
+        .navbar-toggler:hover {
+            background: rgba(212, 168, 67, 0.12);
+        }
+        .navbar-toggler:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        .navbar-toggler-icon {
+            display: inline-block;
+            width: 1.5rem;
+            height: 1.5rem;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(212,168,67,1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: background-image 0.3s ease;
+        }
+
+        /* When toggler is open → show cross (X) */
+        .navbar-toggler.open .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(212,168,67,1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M6 6L24 24M6 24L24 6'/%3e%3c/svg%3e");
+        }
+
+        /* ============================================================
+                   HERO BANNER
+                   ============================================================ */
+        .hero-banner {
+            position: relative;
+            min-height: 380px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, #2a5a8c 100%);
+        }
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://picsum.photos/seed/trophy-awards-gold/1920/600.jpg') center/cover no-repeat;
+            opacity: 0.2;
+        }
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(15, 36, 64, 0.6), rgba(26, 58, 92, 0.8));
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 50px 20px;
+        }
+        .hero-content .badge-label {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary-dark);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            padding: 8px 24px;
+            border-radius: 50px;
+            margin-bottom: 16px;
+        }
+        .hero-content h1 {
+            font-size: 46px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+        .hero-content h1 span {
+            color: var(--accent);
+        }
+        .hero-content p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            max-width: 550px;
+            margin: 0 auto 24px;
+            line-height: 1.7;
+        }
+        .hero-decoration {
+            position: absolute;
+            z-index: 1;
+            font-size: 100px;
+            color: rgba(212, 168, 67, 0.08);
+        }
+        .hero-trophy-left {
+            left: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: float 6s ease-in-out infinite;
+        }
+        .hero-trophy-right {
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: float 6s ease-in-out infinite reverse;
+        }
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(-50%) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-55%) rotate(5deg);
+            }
+        }
+
+     
+        /* ============================================================
+                   ABOUT SECTION (Lawrence At Glance)
+                   ============================================================ */
+        .about-section {
+            padding: 60px 0;
+            background: #fff;
+        }
+        .about-section .overline {
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent-dark);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        .about-section .title-line {
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            margin: 0.5rem 0 1rem 0;
+            border-radius: 4px;
+        }
+        .about-section .glance-text {
+            line-height: 1.8;
+            color: #1e2a3a;
+        }
+        .about-section .glance-text p {
+            margin-bottom: 0.75rem;
+        }
+        .about-section .glance-text span {
+            display: block;
+            margin-top: 0.5rem;
+        }
+        .core-list {
+            list-style: none;
+            padding-left: 0;
+            font-size: 0.92rem;
+        }
+        .core-list li {
+            padding: 0.3rem 0 0.3rem 1.8rem;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23d4a843" class="bi bi-check-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>') left center no-repeat;
+            background-size: 1.1rem;
+            margin-bottom: 0.15rem;
+        }
+        .activity-box {
+            border-left: 4px solid var(--accent);
+            border-radius: 4px;
+            background: var(--primary);
+            color: #fff;
+            padding: 1.5rem 2rem;
+            margin: 1.5rem 0;
+        }
+        .activity-box p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 0;
+        }
+
+        /* whatsapp calling icon  */
+        /* ===== FLOATING WHATSAPP & CALL BUTTONS ===== */
+.float-buttons {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 999;
+}
+.float-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 28px;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    position: relative;
+}
+.float-btn:hover {
+    transform: scale(1.08) translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+.float-btn .tooltip-text {
+    position: absolute;
+    right: 72px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+    font-weight: 500;
+}
+.float-btn:hover .tooltip-text {
+    opacity: 1;
+}
+.whatsapp-float {
+    background: #25D366;
+}
+.whatsapp-float:hover {
+    background: #128C7E;
+}
+.call-float {
+    background: red;
+}
+.call-float:hover {
+    background: red;
+}
+
+@media (max-width: 576px) {
+    .float-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
+    }
+    .float-buttons {
+        bottom: 20px;
+        right: 20px;
+        gap: 10px;
+    }
+    .float-btn .tooltip-text {
+        display: none;
+    }
+}
+        /* ============================================================
+                   FOOTER
+                   ============================================================ */
+        .main-footer {
+            background: var(--dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 50px 0 0;
+        }
+        .footer-brand h4 {
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+        .footer-brand .accent-line {
+            width: 30px;
+            height: 3px;
+            background: var(--accent);
+            margin-bottom: 12px;
+            border-radius: 3px;
+        }
+        .footer-brand p {
+            font-size: 13px;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s;
+            margin-right: 6px;
+            font-size: 14px;
+        }
+        .footer-social a:hover {
+            background: var(--accent);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+        .footer-heading {
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 28px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .footer-links a i {
+            font-size: 9px;
+            color: var(--accent);
+        }
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 4px;
+        }
+        .footer-contact li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 13px;
+            list-style: none;
+            padding: 0;
+        }
+        .footer-contact li i {
+            color: var(--accent);
+            margin-top: 2px;
+            width: 16px;
+            flex-shrink: 0;
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 16px 0;
+            margin-top: 30px;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        /* ============================================================
+                   SCROLL TO TOP
+                   ============================================================ */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: var(--primary-dark);
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            z-index: 999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .scroll-top:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(212, 168, 67, 0.4);
+        }
+        .scroll-top.show {
+            display: flex;
+        }
+
+        /* ============================================================
+                   ANIMATIONS
+                   ============================================================ */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all 0.7s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================================
+                   RESPONSIVE
+                   ============================================================ */
+        @media (max-width: 767px) {
+            .hero-content h1 {
+                font-size: 28px;
+            }
+            .section-title h2 {
+                font-size: 24px;
+            }
+            .section-padding {
+                padding: 40px 0;
+            }
+            .about-section {
+                padding: 40px 0;
+            }
+            .activity-box {
+                padding: 1rem 1.25rem;
+            }
+            .activity-box p {
+                font-size: 0.95rem;
+            }
+            .hero-trophy-left,
+            .hero-trophy-right {
+                display: none;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .top-bar .d-flex.gap-4 {
+                flex-wrap: wrap;
+                gap: 0.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============================================================
+    TOP BAR
+    ============================================================ -->
+    <div class="top-bar d-none d-md-block">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex gap-4">
+                    <a href="tel:+911234567890"><i class="fas fa-phone-alt"></i> +91-12345 67890</a>
+                    <a href="mailto:info@lawrenceacademyedu.co.in"><i class="fas fa-envelope"></i> info@lawrenceacademyedu.co.in</a>
+                </div>
+                <div class="d-flex gap-3">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    NAVBAR (with Hamburger → Cross on mobile)
+    ============================================================ -->
+    <nav class="navbar navbar-expand-lg main-navbar">
+        <div class="container">
+            <img src="images/logo.jpg" alt="Logo" class="rounded-circle" width="80" height="80" style="object-fit:cover;" />
+            <a class="navbar-brand" href="#">
+                <div class="brand-text">
+                    <h6 class="text-light mx-2" style="font-size:13px;">Lawrence Academy</h6>
+                </div>
+            </a>
+
+            <!-- Toggler with ID for JS toggle -->
+            <button class="navbar-toggler" type="button" id="navbarToggler" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="schooltour.html">School Tour</a></li>
+
+                    <!-- From The Desk -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="deskDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            From The Desk
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="deskDropdown">
+                            <li><a class="dropdown-item" href="founder.html"><i class="fas fa-user-tie"></i> Founder</a></li>
+                            <li><a class="dropdown-item" href="managingdirector.html"><i class="fas fa-user-cog"></i> Managing Director</a></li>
+                            <li><a class="dropdown-item" href="director.html"><i class="fas fa-user-graduate"></i> Director</a></li>
+                            <li><a class="dropdown-item" href="principal.html"><i class="fas fa-user-graduate"></i> Principal</a></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-envelope"></i> All Messages</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Academic Life -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="academicDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Academic Life
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="academicDropdown">
+                            <li><a class="dropdown-item" href="E-learning.html"><i class="fas fa-laptop"></i> E-Learning</a></li>
+                            <li><a class="dropdown-item" href="Schoolhouse.html"><i class="fas fa-home"></i> School House</a></li>
+                            <li><a class="dropdown-item" href="sports.html"><i class="fas fa-futbol"></i> Sports</a></li>
+                            <li><a class="dropdown-item" href="music.html"><i class="fas fa-music"></i> Music</a></li>
+                            <li><a class="dropdown-item" href="scholarships.html"><i class="fas fa-award"></i> Scholarships</a></li>
+                            <li><a class="dropdown-item" href="extracurricular.html"><i class="fas fa-palette"></i> Extra Curricular Activities</a></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-arrow-right"></i> View All</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link active" href="Gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================================
+    HERO BANNER
+    ============================================================ -->
+    <section class="hero-banner">
+        <i class="fas fa-trophy hero-decoration hero-trophy-left"></i>
+        <i class="fas fa-medal hero-decoration hero-trophy-right"></i>
+        <div class="hero-content">
+            <div class="badge-label fade-up">About Us</div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    ABOUT SECTION (Lawrence At Glance)
+    ============================================================ -->
+    <section class="about-section">
+        <div class="container">
+
+            <!-- Lawrence At Glance -->
+            <div class="mb-5">
+                <div class="overline"><i class="fas fa-award me-1"></i> Lawrence At Glance</div>
+                <h2 class="display-6 fw-semibold" style="color:var(--primary);">Learning is a treasure that follows its owner everywhere.</h2>
+                <div class="glance-text mt-3">
+                    <p style="font-size: larger;">
+                        Lawrence Academy was established in 2011 in Gulaothi with an aim to serve the educational needs. Encompassed in 4 acres of land with lush green lawns and spacious playfields. Our students graduate and continue further studies at several Top Universities. We have years of experience in providing quality and affordable education and received a number of awards for its contribution to education and social service.
+                    </p>
+                    <span style="font-size: larger;">
+                        Despite its extremely modest beginnings, the school has carved out a niche for itself in the educational scenario with high academic standards and excellence in various co-curricular activities. The main motive of this is the all-round development of students, the school integrated its activities in all spheres such as – art &amp; craft, gardening, declamation, music, photography, dance club, debate, reading, public speaking, drama, recitation, creative writing, fine arts, etc. The school has already won many trophies and much acclaim. Take any platform, Inter-school, District, State, National level, our children have proved themselves the best and have brought honor in every field.
+                    </span>
+                    <span style="font-size: larger;">
+                        The greenery of the school is remarkable and special care is being taken to preserve it. The school campus is well planned with the beautifully laid out tree, plantation, pathways, and flowerbeds beside the well maintained sprawling lawns all around.
+                    </span>
+                </div>
+            </div>
+
+            <!-- Activity Box -->
+            <div class="activity-box">
+                <p>
+                    Training and exposing young minds through an array of activities like camps, tours, leadership programmes, cultural meets, workshops, cross country races, cycling expeditions and so on, the school garnered multiple awards and accolades at Inter-school, District, State, National and International levels. Our students proved their mettle at various levels bringing honour and laurels for themselves in a plethora of competitions such as in National Debates (Honourable Speaker, Sh. Som Nath Chatterjee honoured our students), Technology (International Informatics Olympiad – only school in the world whose students represented their country in five successive years), Science &amp; Mathematics (National Exhibitions &amp; Aryabhatta Trophy), Social Science (In MUN National Honour), Quiz (Children recently won the trophies and a trip to Japan), Art (Shankar's National Honour), Music (National scholarship to children up to the age of 21), Sports (National level Table Tennis &amp; Skating, State level Basket Ball, Football, Yoga &amp; Gymnastics) or Band (Leading the district march past on Republic Day celebration successively year after year). Lawrence Academy, Gulaothi has always emerged as the best school.
+                </p>
+            </div>
+
+            <!-- 3-Column Grid: Mission | Vision | Core Values -->
+            <div class="row g-4 mt-3">
+                <!-- COLUMN 1: MISSION -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="overline"><i class="fas fa-bullseye me-1"></i> Mission</div>
+                    <div class="title-line"></div>
+                    <p style="font-size:0.98rem; line-height:1.7;">
+                        Our mission is to make Lawrence Academy a Landmark and Torch Bearer of Quality education and establish a world-class center of learning by delivering an educational experience that engages students intellectually, creatively, physically, spiritually, and socially to transcend all barriers and bring a positive change in society.
+                    </p>
+                    <ul class="core-list">
+                        <li>Development of Rural Students through education.</li>
+                        <li>Respond to local societal needs by developing selected 'targeted research projects'.</li>
+                        <li>Quality training programs in need-based modern technology.</li>
+                        <li>To maintain state-of-the-art infrastructure in laboratories.</li>
+                        <li>To promote a culture of self-employment.</li>
+                        <li>To inculcate moral, ethical, spiritual values in education at all levels.</li>
+                        <li>To give to the world – Lawrence – who can win the hearts and minds of others, put service before self, and retain their humility and values even as they soar high and conquer the world.</li>
+                    </ul>
+                </div>
+
+                <!-- COLUMN 2: VISION -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="overline"><i class="fas fa-eye me-1"></i> Vision</div>
+                    <div class="title-line"></div>
+                    <p style="font-size:0.98rem; line-height:1.7;">
+                        The school's vision is to build institutions that uphold the highest professional standards of excellence in education and innovative instructional practices. And to create a global educational community of conscientious individuals who have developed their intellectual, artistic, and professional talents to the highest degree to bring about positive change in society.
+                    </p>
+                </div>
+
+                <!-- COLUMN 3: CORE VALUES + LONG TERM GOALS -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="overline"><i class="fas fa-gem me-1"></i> Core Values</div>
+                    <div class="title-line"></div>
+                    <p style="font-size:0.98rem; line-height:1.7;">
+                        Lawrence Academy's goal is to become an institution of excellence, where ethical values, character, wisdom, leadership, service, and academic excellence are the foundation for personal and professional growth.
+                    </p>
+                    <div class="mt-2">
+                        <div class="overline" style="font-size:0.7rem; letter-spacing:0.08em; margin-bottom:0.2rem;">
+                            <i class="fas fa-clock me-1"></i> Long Term Goals
+                        </div>
+                        <ul class="core-list">
+                            <li>All information's concerning students/staff to be made available Online.</li>
+                            <li>To make the Campus green and chemical-free.</li>
+                            <li>To go for the energy auditing of the whole campus.</li>
+                            <li>To provide a happy, caring, supportive, and secure environment.</li>
+                            <li>To inculcate values central to the ethos of the school and the community.</li>
+                            <li>To give to the world – Lawrence – who can win the hearts and minds of others, put service before self, and retain their humility and values even as they soar high and conquer the world.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div><!-- /row -->
+
+        </div><!-- /container -->
+    </section>
+
+ <!-- ===== FLOATING WHATSAPP & CALL BUTTONS ===== -->
+<div class="float-buttons">
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/918882787414" target="_blank" class="float-btn whatsapp-float" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="tooltip-text">WhatsApp</span>
+    </a>
+    <!-- Call Button -->
+    <a href="tel:+918882787414" class="float-btn call-float" aria-label="Call us">
+        <i class="fas fa-phone-alt"></i>
+        <span class="tooltip-text">Call Now</span>
+    </a>
+</div>
+
+
+
+    <!-- ============================================================
+    FOOTER
+    ============================================================ -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-brand">
+                        <h4>Lawrence Academy</h4>
+                        <div class="accent-line"></div>
+                        <p>Committed to providing quality education and holistic development since its establishment. We nurture future leaders with knowledge, values, and skills.</p>
+                        <div class="footer-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Academics</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Achievements</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Gallery</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-heading">Academics</h5>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Pre-Primary</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Primary Wing</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Middle Wing</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Senior Secondary</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> CBSE Curriculum</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Results</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-heading">Contact Us</h5>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> <span>Lawrence Academy Campus, Main Road, City - 226001, Uttar Pradesh</span></li>
+                        <li><i class="fas fa-phone-alt"></i> <span>+91-12345 67890<br />+91-98765 43210</span></li>
+                        <li><i class="fas fa-envelope"></i> <span>info@lawrenceacademyedu.co.in</span></li>
+                        <li><i class="fas fa-clock"></i> <span>Mon - Sat: 8:00 AM - 3:00 PM</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p class="mb-0">&copy; 2024 Lawrence Academy. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color:var(--accent);"></i> for Excellence</p>
+            </div>
+        </div>
+    </footer>
+
+    
+
+    <!-- ============================================================
+    SCRIPTS
+    ============================================================ -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // =============================================
+            // 1. HAMBURGER → CROSS TOGGLE (mobile)
+            // =============================================
+            const toggler = document.getElementById('navbarToggler');
+            const collapse = document.getElementById('mainNav');
+
+            if (toggler && collapse) {
+                // When menu opens → add 'open' class to toggler (shows cross)
+                collapse.addEventListener('show.bs.collapse', function() {
+                    toggler.classList.add('open');
+                    toggler.setAttribute('aria-expanded', 'true');
+                });
+                // When menu closes → remove 'open' class (shows hamburger)
+                collapse.addEventListener('hide.bs.collapse', function() {
+                    toggler.classList.remove('open');
+                    toggler.setAttribute('aria-expanded', 'false');
+                });
+            }
+
+            // =============================================
+            // 2. SCROLL OBSERVER (fade-up)
+            // =============================================
+            const fadeEls = document.querySelectorAll('.fade-up');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.15 });
+            fadeEls.forEach(el => observer.observe(el));
+
+            // =============================================
+            // 3. FILTER BY YEAR
+            // =============================================
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const items = document.querySelectorAll('.achievement-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const filterValue = this.dataset.filter;
+                    items.forEach(item => {
+                        const year = item.dataset.year;
+                        if (filterValue === 'all' || year === filterValue) {
+                            item.style.display = '';
+                            item.style.opacity = '0';
+                            item.style.transform = 'translateY(12px)';
+                            setTimeout(() => {
+                                item.style.transition = 'all 0.4s ease';
+                                item.style.opacity = '1';
+                                item.style.transform = 'translateY(0)';
+                            }, 20);
+                        } else {
+                            item.style.transition = 'all 0.3s ease';
+                            item.style.opacity = '0';
+                            item.style.transform = 'translateY(12px)';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+
+            // =============================================
+            // 4. SCROLL TO TOP BUTTON
+            // =============================================
+            const scrollBtn = document.getElementById('scrollTopBtn');
+            if (scrollBtn) {
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 400) {
+                        scrollBtn.classList.add('show');
+                    } else {
+                        scrollBtn.classList.remove('show');
+                    }
+                });
+                scrollBtn.addEventListener('click', function() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            // =============================================
+            // 5. SMOOTH SCROLL FOR ANCHOR LINKS
+            // =============================================
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        const nav = document.getElementById('mainNav');
+                        if (nav && nav.classList.contains('show')) {
+                            new bootstrap.Collapse(nav).hide();
+                        }
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+        });
+    </script>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
+
+</body>
+</html>

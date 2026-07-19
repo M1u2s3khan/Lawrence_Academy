@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sports - Lawrence Academy</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+        :root {
+            --primary: #1a3a5c;
+            --primary-dark: #0f2440;
+            --accent: #d4a843;
+            --accent-light: #f0d78c;
+            --accent-dark: #b8912e;
+            --dark: #1a1a2e;
+            --light-bg: #f8f6f1;
+            --card-bg: #ffffff;
+            --text-dark: #2c2c2c;
+            --text-muted: #6c757d;
+            --success: #28a745;
+            --border-light: rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background: var(--light-bg);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* ============ TOP BAR ============ */
+        .top-bar {
+            background: var(--primary-dark);
+            padding: 6px 0;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .top-bar a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .top-bar a:hover {
+            color: var(--accent);
+        }
+        .top-bar i {
+            color: var(--accent);
+            margin-right: 5px;
+        }
+
+        /* ============ MAIN NAVBAR ============ */
+        .main-navbar {
+            background: var(--primary);
+            padding: 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1050;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+        }
+        .brand-logo {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            font-size: 24px;
+            color: var(--primary-dark);
+            flex-shrink: 0;
+            border: 3px solid var(--accent-light);
+        }
+        .brand-text h5 {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 0;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+        .brand-text span {
+            color: var(--accent);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+
+        .main-navbar .nav-link {
+            color: rgba(255, 255, 255, 0.85) !important;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 22px 16px !important;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+            position: relative;
+        }
+        .main-navbar .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: width 0.3s;
+            border-radius: 3px 3px 0 0;
+        }
+        .main-navbar .nav-link:hover::after,
+        .main-navbar .nav-link.active::after {
+            width: 70%;
+        }
+        .main-navbar .nav-link:hover,
+        .main-navbar .nav-link.active {
+            color: #fff !important;
+        }
+
+        /* Dropdown hover (desktop) */
+        @media (min-width: 992px) {
+            .main-navbar .dropdown:hover .dropdown-menu {
+                display: block;
+                opacity: 1;
+                transform: translateY(0);
+                pointer-events: auto;
+            }
+            .main-navbar .dropdown-menu {
+                display: block;
+                opacity: 0;
+                transform: translateY(-8px);
+                pointer-events: none;
+                transition: opacity 0.2s, transform 0.2s;
+            }
+        }
+
+        .main-navbar .dropdown-menu {
+            background: #ffffff;
+            border: none;
+            border-radius: 12px;
+            padding: 10px 0;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            margin-top: 6px;
+            min-width: 220px;
+        }
+        .main-navbar .dropdown-item {
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 24px;
+            color: #1e293b;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .main-navbar .dropdown-item i {
+            width: 20px;
+            color: var(--accent-dark);
+        }
+        .main-navbar .dropdown-item:hover {
+            background: var(--light-bg);
+            color: var(--primary);
+            padding-left: 28px;
+        }
+
+        @media (max-width: 991.98px) {
+            .main-navbar .nav-link {
+                padding: 12px 16px !important;
+            }
+            .main-navbar .nav-link::after {
+                display: none;
+            }
+            .main-navbar .dropdown-menu {
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            }
+        }
+
+        .navbar-toggler {
+            border: 2px solid var(--accent);
+            padding: 6px 10px;
+        }
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(212,168,67,1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* ============ HERO BANNER ============ */
+        .hero-banner {
+            position: relative;
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, #2a5a8c 100%);
+        }
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://picsum.photos/seed/trophy-awards-gold/1920/600.jpg') center/cover no-repeat;
+            opacity: 0.2;
+        }
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(15, 36, 64, 0.6), rgba(26, 58, 92, 0.8));
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 40px 20px;
+        }
+        .hero-content .badge-label {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary-dark);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            padding: 8px 24px;
+            border-radius: 50px;
+        }
+
+        /* ============ SPORTS CARD ============ */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card-sports {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 40px 40px 35px 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            transition: all 0.2s;
+        }
+
+        .heading {
+            font-size: 34px;
+            font-weight: 700;
+            color: #1e2b3c;
+            letter-spacing: -0.3px;
+            margin-bottom: 6px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #e74c3c;
+            display: inline-block;
+        }
+
+        .description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #2c3e50;
+            margin-bottom: 28px;
+            font-weight: 400;
+        }
+
+        .description strong {
+            font-weight: 600;
+            color: #1e2b3c;
+        }
+
+        /* ── facilities grid (2 columns) ── */
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 24px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .facilities-grid li {
+            display: flex;
+            align-items: center;
+            font-size: 15.5px;
+            color: #1e2b3c;
+            padding: 7px 0;
+            font-weight: 450;
+            border-bottom: 1px solid #f3f3f3;
+        }
+
+        .facilities-grid li i {
+            color: #e74c3c;
+            font-size: 18px;
+            width: 28px;
+            text-align: center;
+            margin-right: 6px;
+            flex-shrink: 0;
+        }
+
+        /* ── image cards ── */
+        .img-card {
+            background: #fafafa;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .img-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.10);
+        }
+
+        .img-card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .img-card .card-body {
+            padding: 10px 12px 12px 12px;
+            background: #ffffff;
+            text-align: center;
+        }
+
+        .img-card .card-body .card-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #1e2b3c;
+            margin: 0;
+            letter-spacing: 0.2px;
+        }
+
+        .img-card .card-body .card-text {
+            font-size: 11px;
+            color: #7f8c8d;
+            margin: 2px 0 0 0;
+        }
+
+        /* ── right side 2x2 grid ── */
+        .right-grid {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .right-grid .row {
+            flex: 1;
+            gap: 16px 0;
+        }
+
+        .right-grid .row>[class*="col-"] {
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+
+        .right-grid .row+.row {
+            margin-top: 0;
+        }
+
+        /* ============ FOOTER ============ */
+        .main-footer {
+            background: var(--dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 60px 0 0;
+        }
+        .footer-brand h4 {
+            color: #fff;
+            font-size: 22px;
+            margin-bottom: 6px;
+        }
+        .footer-brand .accent-line {
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+            margin-bottom: 16px;
+            border-radius: 3px;
+        }
+        .footer-brand p {
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s;
+            margin-right: 8px;
+            font-size: 15px;
+        }
+        .footer-social a:hover {
+            background: var(--accent);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+        .footer-heading {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-links a i {
+            font-size: 10px;
+            color: var(--accent);
+        }
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+        .footer-contact li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: 14px;
+            list-style: none;
+            padding: 0;
+        }
+        .footer-contact li i {
+            color: var(--accent);
+            margin-top: 3px;
+            width: 16px;
+            flex-shrink: 0;
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 20px 0;
+            margin-top: 40px;
+            font-size: 13px;
+        }
+
+        /* ── responsive ── */
+        @media (max-width: 991px) {
+            .card-sports {
+                padding: 30px 24px 28px 24px;
+            }
+            .heading {
+                font-size: 28px;
+            }
+            .right-grid {
+                margin-top: 20px;
+            }
+            .img-card img {
+                height: 130px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .card-sports {
+                padding: 22px 16px 24px 16px;
+            }
+            .heading {
+                font-size: 24px;
+            }
+            .facilities-grid {
+                grid-template-columns: 1fr;
+                gap: 2px;
+            }
+            .facilities-grid li {
+                padding: 6px 0;
+                font-size: 14.5px;
+            }
+            .img-card img {
+                height: 110px;
+            }
+            .right-grid .row>[class*="col-"] {
+                padding-left: 6px;
+                padding-right: 6px;
+            }
+            .right-grid {
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ======== TOP BAR ======== -->
+    <div class="top-bar d-none d-md-block">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex gap-4">
+                    <a href="tel:+911234567890"><i class="fas fa-phone-alt"></i> +91-12345 67890</a>
+                    <a href="mailto:info@lawrenceacademyedu.co.in"><i class="fas fa-envelope"></i> info@lawrenceacademyedu.co.in</a>
+                </div>
+                <div class="d-flex gap-3">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar navbar-expand-lg main-navbar">
+        <div class="container">
+            <img src="images/logo.jpg"
+     alt="Logo"
+     class="rounded-circle"
+     width="80"
+     height="80">
+      <a class="navbar-brand" href="#">
+        <div class="brand-text">
+          <h6 class="text-light mx-2" style="font-size:13px;">Lawrence Academy</h6>
+        </div>
+      </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="schooltour.html">School Tour</a></li>
+
+                    <!-- From The Desk -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="deskDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            From The Desk
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="deskDropdown">
+                            <li><a class="dropdown-item" href="founder.html"><i class="fas fa-user-tie"></i> Founder</a></li>
+                            <li><a class="dropdown-item" href="managingdirector.html"><i class="fas fa-user-cog"></i> Managing Director</a></li>
+                            <li><a class="dropdown-item" href="director.html"><i class="fas fa-user-graduate"></i> Director</a></li>
+                            <li><a class="dropdown-item" href="principal.html"><i class="fas fa-user-graduate"></i> Principal</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-envelope"></i> All Messages</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Academic Life -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="academicDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Academic Life
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="academicDropdown">
+                            <li><a class="dropdown-item" href="E-learning.html"><i class="fas fa-laptop"></i> E-Learning</a></li>
+                            <li><a class="dropdown-item" href="Schoolhouse.html"><i class="fas fa-home"></i> School House</a></li>
+                            <li><a class="dropdown-item" href="sports.html"><i class="fas fa-futbol"></i> Sports</a></li>
+                            <li><a class="dropdown-item" href="music.html"><i class="fas fa-music"></i> Music</a></li>
+                            <li><a class="dropdown-item" href="scholarships.html"><i class="fas fa-award"></i> Scholarships</a></li>
+                            <li><a class="dropdown-item" href="extracurricular.html"><i class="fas fa-palette"></i> Extra Curricular Activities</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-arrow-right"></i> View All</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link" href="Gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ======== HERO BANNER ======== -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            <div class="badge-label">Sports</div>
+        </div>
+    </section>
+
+    <!-- ======== SPORTS SECTION ======== -->
+    <div class="section mt-4 mb-4">
+        <div class="card-sports">
+
+            <div class="row g-4">
+
+                <!-- ===== LEFT SIDE (col-lg-8) ===== -->
+                <div class="col-lg-8">
+
+                    <h1 class="heading">Sports</h1>
+
+                    <p class="description">
+                        A healthy body is an essential pre-requisite for a healthy mind and a comprehensive physical education program of <strong>Lawrence Academy</strong> ensures discipline fitness, team spirit, confidence, and an all-around personality. Our students have made a mark at the national level, state level in Tennis, Basketball, volleyball, and Athletics.
+                    </p>
+
+                    <ul class="facilities-grid">
+                        <li><i class="fas fa-check-circle"></i> Jogging</li>
+                        <li><i class="fas fa-check-circle"></i> Cricket</li>
+                        <li><i class="fas fa-check-circle"></i> Indoor sports</li>
+                        <li><i class="fas fa-check-circle"></i> Football</li>
+                        <li><i class="fas fa-check-circle"></i> Basketball</li>
+                        <li><i class="fas fa-check-circle"></i> Gymnastics</li>
+                        <li><i class="fas fa-check-circle"></i> Aerobics</li>
+                        <li><i class="fas fa-check-circle"></i> Table Tennis</li>
+                        <li><i class="fas fa-check-circle"></i> Hockey</li>
+                        <li><i class="fas fa-check-circle"></i> Throwball</li>
+                    </ul>
+
+                </div>
+                <!-- /col-lg-8 -->
+
+                <!-- ===== RIGHT SIDE (col-lg-4) → 2×2 image grid ===== -->
+                <div class="col-lg-4">
+
+                    <div class="right-grid">
+
+                        <!-- TOP ROW: 2 images -->
+                        <div class="row g-2">
+                            <div class="col-6">
+                                <div class="img-card">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA4XQOQi-RbupvlAjdCjzzCbDy8ndy4BKOrlNjiPL4Gy34_dlgeLc8w54&s=10"
+                                    alt="Athletics" />
+                                    <div class="card-body">
+                                        <div class="card-title">Athletics</div>
+                                        <div class="card-text">Track &amp; field</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="img-card">
+                                    <img src="https://media.istockphoto.com/id/484660504/photo/running-in-the-woods.jpg?s=612x612&w=0&k=20&c=K6TOPa3ITQWWKpKf9dAG-hbkn4Bpoh8NXIvlvgoWXBI="
+                                    alt="Cross Country" />
+                                    <div class="card-body">
+                                        <div class="card-title">Cross Country</div>
+                                        <div class="card-text">Endurance &amp; fitness</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- BOTTOM ROW: 2 images -->
+                        <div class="row g-2">
+                            <div class="col-6">
+                                <div class="img-card">
+                                    <img src="https://cdn.prod.website-files.com/64cc9ac785b381c4bb455d20/668d50f4c1574697ff1ee5ba_14-1b.png"
+                                    alt="Football" />
+                                    <div class="card-body">
+                                        <div class="card-title">Football</div>
+                                        <div class="card-text">Team spirit</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="img-card">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/055/864/432/small/a-boy-in-an-orange-jersey-dribbles-a-basketball-on-an-outdoor-court-showcasing-swift-movement-against-a-backdrop-of-blurred-trees-and-players-capturing-the-energy-of-play-photo.jpg"
+                                    alt="Basketball" />
+                                    <div class="card-body">
+                                        <div class="card-title">Basketball</div>
+                                        <div class="card-text">Agility &amp; coordination</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /right-grid -->
+
+                </div>
+                <!-- /col-lg-4 -->
+
+            </div>
+            <!-- /row -->
+
+        </div>
+        <!-- /card-sports -->
+    </div>
+    <!-- /section -->
+
+    <!-- ======== FOOTER ======== -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-brand">
+                        <h4>Lawrence Academy</h4>
+                        <div class="accent-line"></div>
+                        <p>Committed to providing quality education and holistic development since its establishment. We nurture future leaders with knowledge, values, and skills.</p>
+                        <div class="footer-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Academics</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Achievements</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Gallery</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-heading">Academics</h5>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Pre-Primary</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Primary Wing</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Middle Wing</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Senior Secondary</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> CBSE Curriculum</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Results</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-heading">Contact Us</h5>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> <span>Lawrence Academy Campus, Main Road, City - 226001, Uttar Pradesh</span></li>
+                        <li><i class="fas fa-phone-alt"></i> <span>+91-12345 67890<br>+91-98765 43210</span></li>
+                        <li><i class="fas fa-envelope"></i> <span>info@lawrenceacademyedu.co.in</span></li>
+                        <li><i class="fas fa-clock"></i> <span>Mon - Sat: 8:00 AM - 3:00 PM</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p class="mb-0">&copy; 2024 Lawrence Academy. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color:var(--accent);"></i> for Excellence</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+</body>
+</html>
